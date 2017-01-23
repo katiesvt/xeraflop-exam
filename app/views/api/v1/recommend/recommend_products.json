@@ -1,0 +1,57 @@
+[
+  {
+    "product_name": "Pure THC",
+    "thc_content": "100",
+    "price_per_gram": 0.25,
+    "suggested_quantity": 100,
+    "retailer": {
+      "name": "Literally a Chemlab",
+      "address": "123 Industral Ave",
+      "distance": 1.23
+    }
+  },
+  {
+    "product_name": "Pure THC",
+    "thc_content": "100",
+    "price_per_gram": 0.25,
+    "suggested_quantity": 100,
+    "retailer": {
+      "name": "Literally a Chemlab",
+      "address": "123 Industral Ave",
+      "distance": 1.23
+    }
+  },
+  {
+    "product_name": "Pure THC",
+    "thc_content": "100",
+    "price_per_gram": 0.25,
+    "suggested_quantity": 100,
+    "retailer": {
+      "name": "Literally a Chemlab",
+      "address": "123 Industral Ave",
+      "distance": 1.23
+    }
+  },
+  {
+    "product_name": "Pure THC",
+    "thc_content": "100",
+    "price_per_gram": 0.25,
+    "suggested_quantity": 100,
+    "retailer": {
+      "name": "Literally a Chemlab",
+      "address": "123 Industral Ave",
+      "distance": 1.23
+    }
+  },
+  {
+    "product_name": "Pure THC",
+    "thc_content": "100",
+    "price_per_gram": 0.25,
+    "suggested_quantity": 100,
+    "retailer": {
+      "name": "Literally a Chemlab",
+      "address": "123 Industral Ave",
+      "distance": 1.23
+    }
+  }
+]
