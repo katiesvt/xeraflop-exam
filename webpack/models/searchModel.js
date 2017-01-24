@@ -21,15 +21,21 @@ var searchModel = function() {
     });
   };
 
-  // TODO: 2 decimal digit
   formatCurrency = function(numericValue) {
-    return "$ " + numericValue.toString();
+    return "$ " + numericValue.toFixed(2);
   }
 
-  // TODO: 2 decimal digit
   formatDistance = function(distanceValue) {
-    return distanceValue.toString() + " mi";
+    return distanceValue.toFixed(2) + " mi";
   }
+
+  /**
+   * @param {Array} array
+   */
+  formatTHC = function(array) {
+    return (_.sum(array) / array.length).toFixed(2) + "%";
+  }
+
 };
 
 module.exports = searchModel;

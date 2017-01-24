@@ -1,9 +1,12 @@
 class Api::V1::RecommendController < Api::V1::V1Controller
   def recommend_products
-    retailers = restrict_retailer_set(geo_product_search(params['zipCode']))
-    products = restrict_product_set(ProductSet.from_retailer_list(retailers))
+    retailers = geo_product_search(params['zipCode'])
+    restrict_retailer_set(retailers)
 
-    result = recommend(products)
+    products = ProductSet.from_retailer_list(retailers)
+    restrict_product_set(products, params['maxSpend'].to_f)
+
+    result = products.recommend(total_price: params['maxSpend'].to_f)
 
     render json: result
   end
@@ -12,13 +15,14 @@ class Api::V1::RecommendController < Api::V1::V1Controller
 
   # Restrict retailers based on distance
   def restrict_retailer_set(set)
-    set.select { |retailer| retailer['distance'].to_f < params['maxRadius'].to_f }
+    set.select! { |retailer| retailer['distance'].to_f < params['maxRadius'].to_f }
   end
 
   # Restrict products to workable set
-  def restrict_product_set(set)
-    set.select! { |product| product.price < 50 }
+  def restrict_product_set(set, maxPrice)
+    set.select! { |product| product['price_f'] < maxPrice }
     # TODO: If unit isn't grams our ratio will be way off
+    # TODO: define methods instead of using some symbols and some methods
     set.sort_by! { |product| product.price_per_g / product.avg_thc }
   end
 

@@ -47,19 +47,18 @@
 
   <div class="row">
     <div class="col">
-      <pre data-bind="text: ko.toJSON(response, null, 2)"></pre>
-    </div>
-  </div>
-
-  <div class="row"
-       data-bind="foreach: response">
-    <div class="col-sm-4">
-      TODO
-    </div>
-    <div class="col-sm-8">
-      <h3 data-bind="text: product_name"></h3>
-      <p>from <span data-bind="text: retailer.name"></span> at <span data-bind="text: retailer.address"></span> (<span data-bind="text: formatDistance(retailer.distance)"></span>)</p>
-      <p>THC: <span data-bind="text: thc_content"></span>, price: <span data-bind="text: formatCurrency(price_per_gram * suggested_quantity)"></span></p>
+        <div class="list-group" data-bind="foreach: response">
+        <a class="list-group-item flex-column align-items-start">
+          <div class="media">
+            <img class="d-flex mr-3" data-bind="attr: { src: picture_images.thumb }">
+            <div class="media-body">
+              <h5 class="mt-0" data-bind="text: name"></h5>
+              <span>from <span data-bind="text: retailer.name"></span> at <span data-bind="text: retailer.address"></span> (<span data-bind="text: formatDistance(retailer.distance)"></span>)</span><br />
+              <small class="text-muted">THC: <span data-bind="text: formatTHC(thc_range)"></span>, price: <span data-bind="text: formatCurrency(price)"></span></small>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 

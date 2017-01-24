@@ -1,5 +1,5 @@
 class Retailer < Hash
 	def initialize(hash)
-		merge(hash)
+		merge!(hash)
 	end
 end

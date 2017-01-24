@@ -1,4 +1,5 @@
 var ko = require('knockout');
+var _ = require('lodash');
 
 // Generate view models
 var appModel = {};
