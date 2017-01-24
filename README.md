@@ -1,6 +1,7 @@
-Ruby version 2.4.0
-Node "Boron" LTS (version 6)
-Rails version 5
+# Pre-requisites
+
+- Ruby version 2.4.0
+- Node "Boron" LTS (version 6)
 
 # Install
 
