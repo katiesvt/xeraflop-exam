@@ -53,8 +53,8 @@
             <img class="d-flex mr-3" data-bind="attr: { src: picture_images.thumb }">
             <div class="media-body">
               <h5 class="mt-0" data-bind="text: name"></h5>
-              <span>from <span data-bind="text: retailer.name"></span> at <span data-bind="text: retailer.address"></span> (<span data-bind="text: formatDistance(retailer.distance)"></span>)</span><br />
-              <small class="text-muted">THC: <span data-bind="text: formatTHC(thc_range)"></span>, price: <span data-bind="text: formatCurrency(price)"></span></small>
+              <span>from <span data-bind="text: retailer.name"></span> at <span data-bind="text: retailer.address"></span> (<span data-bind="text: $parent.formatDistance(retailer.distance)"></span>)</span><br />
+              <small class="text-muted">THC: <span data-bind="text: $parent.formatTHC(thc_range)"></span>, price: <span data-bind="text: $parent.formatCurrency(price)"></span></small>
             </div>
           </div>
         </a>

@@ -29,6 +29,13 @@ var config = {
     filename: production ? '[name]-[chunkhash].js' : '[name].js'
   },
 
+  module: {
+    loaders: [{
+      loader: 'babel-loader',
+      test: path.join(__dirname, '..', 'webpack'),
+    }]
+  },
+
   resolve: {
     root: path.join(__dirname, '..', 'webpack'),
     modulesDirectories: ["node_modules"]
@@ -51,11 +58,15 @@ if (production) {
   config.plugins.push(
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compressor: { warnings: false },
+      compressor: {
+        warnings: false
+      },
       sourceMap: false
     }),
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('production') }
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin()
@@ -63,11 +74,13 @@ if (production) {
 } else {
   config.devServer = {
     port: devServerPort,
-    headers: { 'Access-Control-Allow-Origin': '*' }
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   };
   config.output.publicPath = '//localhost:' + devServerPort + '/webpack/';
   // Source maps
-  config.devtool = 'cheap-module-eval-source-map';
+  config.devtool = 'inline-source-map';
 }
 
 module.exports = config;

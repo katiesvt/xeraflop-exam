@@ -1,5 +1,7 @@
 class Api::V1::RecommendController < Api::V1::V1Controller
   def recommend_products
+    return head :bad_request unless params_ok?
+
     retailers = geo_product_search(params['zipCode'])
     restrict_retailer_set(retailers)
 
@@ -8,10 +10,21 @@ class Api::V1::RecommendController < Api::V1::V1Controller
 
     result = products.recommend(total_price: params['maxSpend'].to_f)
 
+    Rails.logger.debug(result)
+
     render json: result
   end
 
   private
+
+  def params_ok?
+    Rails.logger.debug(p(params))
+    return false unless params['zipCode']&.length
+    return false unless params['maxSpend'] =~ /^\d+$/
+    return false unless params['maxRadius'] =~ /^\d+$/
+
+    true
+  end
 
   # Restrict retailers based on distance
   def restrict_retailer_set(set)

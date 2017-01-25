@@ -1,9 +1,12 @@
-var ko = require('knockout');
-var _ = require('lodash');
+import 'babel-polyfill';
 
-// Generate view models
-var appModel = {};
+import ko from 'knockout';
+import _ from 'lodash';
 
-appModel.searchModel = require('models/searchModel');
+import SearchModel from 'models/searchModel';
+
+var appModel = {
+  searchModel: new SearchModel()
+};
 
 ko.applyBindings(appModel);
