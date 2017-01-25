@@ -1,7 +1,7 @@
 class Product < Hash
   def initialize(hash)
-		merge!(hash)
-	end
+    merge!(hash)
+  end
 
   def avg_thc
     self['thc_range'].inject(:+).to_f / self['thc_range'].size
